@@ -36,9 +36,11 @@
 
 
         var count = 0
-
         const activator = document.getElementById("activation_field")
         activator.addEventListener("click", () => {
+            if (count == 4) {
+                count = 0
+            }
             count += 1
             activator.innerHTML = count
             console.log(count)
