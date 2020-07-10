@@ -60,6 +60,4 @@ const stroke_set = {
                 {'ふ': 'romaji'}, 
                 {'ほ': 'romaji'}
             ]
-
-            
             }
