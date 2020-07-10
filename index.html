@@ -42,9 +42,7 @@
 <body id='activation_field'>
 
 
-    <button type="button" class="custom-button">G-LI</button>
-    <button type="button" class="custom-button">G-LU</button>
-    <button type="button" class="custom-button">G-LL</button>
+    <!-- <button type="button" class="custom-button">G-LI</button> -->
 
     <div class='content' id='content_field'>
 
@@ -55,12 +53,24 @@
 
 
     <script>
-        const stroke_set = {
-            '1': ['く', 'し', 'つ', 'て', 'そ', 'の', 'ひ', 'へ', 'ゐ', 'ん', 'る', 'ろ'],
-            '2': ['あ', 'い', 'う', 'え', 'こ', 'さ', 'す', 'ち', 'と', 'み', 'よ', 'ら', 'ゆ', 'り', 'れ', 'わ', 'ぬ', 'ね', 'め'],
-            '3': ['お', 'か', 'き', 'け', 'せ', 'に', 'は', 'ま', 'む', 'も', 'や'],
-            '4': ['た', 'な', 'ふ', 'ほ', 'を']
+        // Utils
+        function adder(items) {
+            let tempArr = items
+            for (let i = 0; i < tempArr.length; i++) {
+                tempArr[i] = "<button type=\x27button\x27 class=\x27custom-button\x27>" + tempArr[i] + "<br> romaji" + "</button>"
+            }
+            return tempArr
         }
+        // Utils
+
+        // Data
+        const stroke_set = {
+                '1': ['く', 'し', 'つ', 'て', 'そ', 'の', 'ひ', 'へ', 'ゐ', 'ん', 'る', 'ろ'],
+                '2': ['あ', 'い', 'う', 'え', 'こ', 'さ', 'す', 'ち', 'と', 'み', 'よ', 'ら', 'ゆ', 'り', 'れ', 'わ', 'ぬ', 'ね', 'め'],
+                '3': ['お', 'か', 'き', 'け', 'せ', 'に', 'は', 'ま', 'む', 'も', 'や', 'を'],
+                '4': ['た', 'な', 'ふ', 'ほ', ]
+            }
+            // Data
 
         var count = 1
         const activator = document.getElementById('activation_field')
@@ -70,8 +80,8 @@
                 count = 0
             }
             count += 1
-            content_field.innerHTML = stroke_set[count].join(' ')
-            console.log(stroke_set[count])
+            content_field.innerHTML = ""
+            content_field.innerHTML = stroke_set[count]
         })
     </script>
 
@@ -79,8 +89,10 @@
     <script>
         // Function invoked on initial pageload.
         (() => {
-            console.log("IFFE")
-            content_field.innerHTML = stroke_set[count].join(' ')
+            content_field.innerHTML = adder(stroke_set[count])
+            adder(stroke_set[2])
+            adder(stroke_set[3])
+            adder(stroke_set[4])
         })()
     </script>
 </body>
