@@ -34,6 +34,14 @@
             user-select: none;
             outline: none;
         }
+        
+        #stroke_count {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            border: 1px red solid;
+            padding: 5px;
+        }
     </style>
 </head>
 
@@ -48,6 +56,7 @@
 
     </div>
 
+    <div id="stroke_count">Strokes: <span id="stroke_count_display"></span></div>
 
 
 
@@ -75,6 +84,7 @@
         var count = 1
         const activator = document.getElementById('activation_field')
         const content_field = document.getElementById('content_field')
+        const stroke_count_display = document.getElementById('stroke_count_display')
         activator.addEventListener('click', () => {
             if (count == 4) {
                 count = 0
@@ -82,6 +92,8 @@
             count += 1
             content_field.innerHTML = ""
             content_field.innerHTML = stroke_set[count]
+            stroke_count_display.innerHTML = count
+
         })
     </script>
 
@@ -90,6 +102,7 @@
         // Function invoked on initial pageload.
         (() => {
             content_field.innerHTML = adder(stroke_set[count])
+            stroke_count_display.innerHTML = count
             adder(stroke_set[2])
             adder(stroke_set[3])
             adder(stroke_set[4])
