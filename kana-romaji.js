@@ -1,3 +1,8 @@
+
+function hello() {
+    return "hello world"
+}
+hello()
 const stroke_set = {
                 '1': [
                 {'く': 'romaji'}, 

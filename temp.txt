@@ -1,0 +1,7 @@
+function test() {
+    Object.keys(myDict).map(function(array) {
+    array.forEach(function(item) {
+        console.log(item)
+    })
+})
+}

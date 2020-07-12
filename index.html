@@ -57,22 +57,112 @@
     </div>
 
     <script>
-        // Utils
-        function adder(items) {
-            let tempArr = items
-            for (let i = 0; i < tempArr.length; i++) {
-                tempArr[i] = "<button type=\x27button\x27 class=\x27custom-button\x27>" + tempArr[i] + "<br> romaji" + "</button>"
-            }
-            return tempArr
-        }
-        // Utils
-
         // Data
         const stroke_set = {
-                '1': ['く', 'し', 'つ', 'て', 'そ', 'の', 'ひ', 'へ', 'ゐ', 'ん', 'る', 'ろ'],
-                '2': ['あ', 'い', 'う', 'え', 'こ', 'さ', 'す', 'ち', 'と', 'み', 'よ', 'ら', 'ゆ', 'り', 'れ', 'わ', 'ぬ', 'ね', 'め'],
-                '3': ['お', 'か', 'き', 'け', 'せ', 'に', 'は', 'ま', 'む', 'も', 'や', 'を'],
-                '4': ['た', 'な', 'ふ', 'ほ', ]
+                '1': [{
+                    'く': 'ku'
+                }, {
+                    'し': 'shi'
+                }, {
+                    'つ': 'tsu'
+                }, {
+                    'て': 'te'
+                }, {
+                    'そ': 'zu'
+                }, {
+                    'の': 'no'
+                }, {
+                    'ひ': 'hi'
+                }, {
+                    'へ': 'he'
+                }, {
+                    'ゐ': '?'
+                }, {
+                    'ん': 'n'
+                }, {
+                    'る': 'ru'
+                }, {
+                    'ろ': '?'
+                }],
+
+
+                '2': [{
+                    'あ': 'a'
+                }, {
+                    'い': 'i'
+                }, {
+                    'う': 'u'
+                }, {
+                    'え': 'e'
+                }, {
+                    'こ': 'ko'
+                }, {
+                    'さ': 'sa'
+                }, {
+                    'す': 'su'
+                }, {
+                    'ち': 'chi'
+                }, {
+                    'と': 'to'
+                }, {
+                    'み': 'mi'
+                }, {
+                    'よ': 'yo'
+                }, {
+                    'ら': 'ra'
+                }, {
+                    'ゆ': 'yu'
+                }, {
+                    'り': 'ri'
+                }, {
+                    'れ': 're'
+                }, {
+                    'わ': 'wa'
+                }, {
+                    'ぬ': 'nu'
+                }, {
+                    'ね': 'ne'
+                }, {
+                    'め': 'me'
+                }],
+
+
+                '3': [{
+                    'お': 'o'
+                }, {
+                    'か': 'ka'
+                }, {
+                    'き': 'ki'
+                }, {
+                    'け': 'ke'
+                }, {
+                    'せ': 'se'
+                }, {
+                    'に': 'ni'
+                }, {
+                    'は': 'ha (wa)'
+                }, {
+                    'ま': 'ma'
+                }, {
+                    'む': 'mu'
+                }, {
+                    'も': 'mo'
+                }, {
+                    'や': 'ya'
+                }, {
+                    'を': 'o'
+                }],
+
+
+                '4': [{
+                    'た': 'ta'
+                }, {
+                    'な': 'na'
+                }, {
+                    'ふ': 'fu'
+                }, {
+                    'ほ': 'ho'
+                }]
             }
             // Data
 
@@ -105,14 +195,8 @@
 
         function arrayToDom(inputArray, selectorID) {
             document.getElementById(selectorID).innerHTML = inputArray.map((item) => {
-                return "<button type=\x27button\x27 class=\x27custom-button\x27>" + item + "<br> romaji" + "</button>";
+                return "<button type=\x27button\x27 class=\x27custom-button\x27>" + Object.keys(item) + "<br><br>" + Object.values(item) + "</button>";
             }).join('');
-        }
-
-        function arrayToDomList(inputArray, selectorID) {
-            document.getElementById(selectorID).innerHTML = '<ul>' + inputArray.map((item) => {
-                return '<li>' + item + '</li>';
-            }).join('') + '</ul>';
         }
     </script>
 </body>
