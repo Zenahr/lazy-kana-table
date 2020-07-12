@@ -7,10 +7,12 @@
     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
     <style>
         #activation_field {
-            height: 100vh;
+            width: 100vw;
+            height: 100%;
+            z-index: -1000;
         }
         
-        #content_field {
+        #main {
             user-select: none;
         }
     </style>
@@ -21,6 +23,7 @@
         html {
             background-color: rgb(17, 17, 17);
             color: white;
+            height: 100%;
         }
         
         .custom-button {
@@ -39,25 +42,19 @@
             right: 0;
             border: 1px red solid;
             padding: 5px;
+            user-select: none;
         }
     </style>
 </head>
 
 
 
-<body id='activation_field'>
+<body>
 
-
-    <!-- <button type="button" class="custom-button">G-LI</button> -->
-
-    <div class='content' id='content_field'>
-
+    <div id="activation_field">
+        <div class='content' id='main'></div>
+        <div id="stroke_count">Strokes: <span id="stroke_count_display"></span></div>
     </div>
-
-    <div id="stroke_count">Strokes: <span id="stroke_count_display"></span></div>
-
-
-
 
     <script>
         // Utils
@@ -81,15 +78,15 @@
 
         var count = 1
         const activator = document.getElementById('activation_field')
-        const content_field = document.getElementById('content_field')
+        const main = document.getElementById('main')
         const stroke_count_display = document.getElementById('stroke_count_display')
         activator.addEventListener('click', () => {
             if (count == 4) {
                 count = 0
             }
             count += 1
-            content_field.innerHTML = ""
-            content_field.innerHTML = stroke_set[count]
+            main.innerHTML = ""
+            arrayToDom(stroke_set[count], 'main')
             stroke_count_display.innerHTML = count
 
         })
@@ -99,12 +96,24 @@
     <script>
         // Function invoked on initial pageload.
         (() => {
-            content_field.innerHTML = adder(stroke_set[count])
             stroke_count_display.innerHTML = count
-            adder(stroke_set[2])
-            adder(stroke_set[3])
-            adder(stroke_set[4])
+            arrayToDom(stroke_set[1], 'main')
+            arrayToDom(stroke_set[2], 'main')
+            arrayToDom(stroke_set[3], 'main')
+            arrayToDom(stroke_set[4], 'main')
         })()
+
+        function arrayToDom(inputArray, selectorID) {
+            document.getElementById(selectorID).innerHTML = inputArray.map((item) => {
+                return "<button type=\x27button\x27 class=\x27custom-button\x27>" + item + "<br> romaji" + "</button>";
+            }).join('');
+        }
+
+        function arrayToDomList(inputArray, selectorID) {
+            document.getElementById(selectorID).innerHTML = '<ul>' + inputArray.map((item) => {
+                return '<li>' + item + '</li>';
+            }).join('') + '</ul>';
+        }
     </script>
 </body>
 
